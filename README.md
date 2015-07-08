@@ -21,5 +21,5 @@ or via the gitweb interface
 
 or create it yourself with this Dockerfile:
 
-    sudo docker build -t &lt;group&gt;/git-server:&lt;tag&gt; .
+    sudo docker build -t <group>/git-server:<tag> .
     
