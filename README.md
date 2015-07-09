@@ -25,3 +25,10 @@ By default, it will serve the internal directory /opt/git, but you can easily ha
     
 This will serve your existing repositories at `/srv/git` via http on port 8080.
 
+Running the server detached
+
+    sudo docker run -d -p 8080:80 -v /srv/git:/opt/git rgwch/git-server:1.0.4 /usr/sbin/apachectl -D FOREGROUND
+    
+This will run the git server container in the background. find it with `sudo docker ps` and stop it with `sudo docker stop <id>`
+
+
