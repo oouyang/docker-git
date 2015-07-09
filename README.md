@@ -19,7 +19,9 @@ or via the gitweb interface
     http://<address>:8080
 
 
-or create it yourself with this Dockerfile:
+By default, it will serve the internal directory /opt/git, but you can easily have an existing repotisory root served;
 
-    sudo docker build -t <group>/git-server:<tag> .
+    sudo docker run -t -i -p 8080:80 -v /srv/git:/opt/git rgwch/git-server:1.0.4 bash
     
+This will serve your existing repositories at `/srv/git` via http on port 8080.
+
