@@ -38,7 +38,7 @@ This way, you'll end up in a bash shell inside the container.
 * remove users by removing the respective lines in /etc/lighttpd/.password
 * add new user credentials like this: 
 
-    /usr/sbin/addgituser.pl <name> <password> >/etc/lighttpd/.passwd
+    /usr/sbin/addgituser.pl <name> <password> >>/etc/lighttpd/.passwd
     
 
 --------- Version 1.0.4 -------
