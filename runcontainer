@@ -1,0 +1,12 @@
+#! /bin/bash
+
+TARGET_GID=$(stat -c "%g" /opt/git)
+TARGET_UID=$(stat -c "%u" /opt/git)
+groupadd -g $TARGET_GID -o gitgroup
+useradd -u $TARGET_UID -g $TARGET_GID -r gitserver
+
+git config --global user.email "info@gitserver.invalid"
+git config --global user.name "admin git server"
+
+/usr/sbin/addgituser.pl git git >/etc/lighttpd/.passwd
+/usr/sbin/lighttpd -D -f /etc/lighttpd/lighttpd.conf
