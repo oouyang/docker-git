@@ -1,12 +1,12 @@
 FROM debian:latest
 MAINTAINER weirich@elexis.ch
-LABEL description="A minimal git server"
-RUN apt-get -y update && apt-get -y upgrade && apt-get -y install git apache2 nano
-COPY apache2.conf /etc/apache2/apache2.conf
-COPY 001-gitweb.conf /etc/apache2/sites-available/001-gitweb.conf
-COPY gitweb /var/www/gitweb/
-RUN ln /etc/apache2/sites-available/001-gitweb.conf /etc/apache2/sites-enabled/001-gitweb.conf
+COPY runcontainer /usr/sbin/runcontainer
+RUN apt-get -y update && apt-get -y install nano gitweb lighttpd 
+ENV GIT_HTTP_EXPORT_ALL ""
 RUN mkdir /opt/git
-RUN a2enmod cgi alias env
-RUN rm /etc/apache2/sites-enabled/000-default.conf
-EXPOSE 80
+COPY config/gitweb.conf /etc/gitweb.conf
+COPY addgituser.pl /usr/sbin/addgituser.pl
+COPY config/lighttpd/ /etc/lighttpd
+RUN chmod +x /usr/sbin/runcontainer && chmod +x /usr/sbin/addgituser.pl
+WORKDIR /etc/lighttpd
+CMD ["/usr/sbin/runcontainer"]
