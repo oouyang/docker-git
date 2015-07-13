@@ -9,4 +9,5 @@ git config --global user.email "info@gitserver.invalid"
 git config --global user.name "admin git server"
 
 /usr/sbin/addgituser.pl git git >/etc/lighttpd/.passwd
+chown -R gitserver.gitgroup /var/cache/lighttpd
 /usr/sbin/lighttpd -D -f /etc/lighttpd/lighttpd.conf
