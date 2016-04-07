@@ -8,7 +8,7 @@ This is a quite simple Git-server for small workgroups. It is based on debian:la
 
 I recommend to ise it on a local net or over VPN only. (Or modify it to your needs)
 
-Start: `sudo docker run -d -p 8080:80 -v /path/to/git/repos:/opt/git rgwch/docker-git:2.0.0`
+Start: `sudo docker run -d -p 8080:80 -v /path/to/git/repos:/opt/git quay.io/alaska/git/`
 
 This will serve the git repositories at the host's `/path/to/git/repos`
 
@@ -49,7 +49,7 @@ a docker image with a simple git server
 This is a quite simple Git-server for small workgroups. It is based on debian:latest and serves git repositories over http without encryption and without authentication.
 Use it on a local net or over VPN. (Or modify it to your needs)
 
-Start: `sudo docker run -t -i -p 8080:80 rgwch/git-server:<tag> bash`
+Start: `sudo docker run -t -i -p 8080:80 quay.io/alaska/git bash`
 
     cd /opt/git
     git clone --bare <existing repo>
@@ -66,13 +66,13 @@ or via the gitweb interface
 
 By default, it will serve the internal directory /opt/git, but you can easily have an existing repotisory root served;
 
-    sudo docker run -t -i -p 8080:80 -v /srv/git:/opt/git rgwch/git-server:1.0.4 bash
+    sudo docker run -t -i -p 8080:80 -v /srv/git:/opt/git quay.io/alaska/git bash
     
 This will serve your existing repositories at `/srv/git` via http on port 8080.
 
 Running the server detached
 
-    sudo docker run -d -p 8080:80 -v /srv/git:/opt/git rgwch/git-server:1.0.4 /usr/sbin/apachectl -D FOREGROUND
+    sudo docker run -d -p 8080:80 -v /srv/git:/opt/git quay.io/alaska/git /usr/sbin/apachectl -D FOREGROUND
     
 This will run the git server container in the background. find it with `sudo docker ps` and stop it with `sudo docker stop <id>`
 

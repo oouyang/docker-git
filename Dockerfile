@@ -1,5 +1,5 @@
 FROM debian:latest
-MAINTAINER weirich@elexis.ch
+MAINTAINER owen.ouyang@live.com
 COPY runcontainer /usr/sbin/runcontainer
 RUN apt-get -y update && apt-get -y install nano gitweb lighttpd 
 ENV GIT_HTTP_EXPORT_ALL ""
